@@ -18,8 +18,8 @@ class Configuration implements ConfigurationInterface
      */
     public function getConfigTreeBuilder()
     {
-        $treeBuilder = new TreeBuilder();
-        $rootNode = $treeBuilder->root('octava_branching');
+        $treeBuilder = new TreeBuilder('octava_branching');
+        $rootNode = $treeBuilder->getRootNode();
 
         /** @var ArrayNodeDefinition $rootNode */
         $rootNode
@@ -33,8 +33,8 @@ class Configuration implements ConfigurationInterface
 
     public function addSwitchDbNode()
     {
-        $builder = new TreeBuilder();
-        $node = $builder->root('switch_db');
+        $builder = new TreeBuilder('switch_db');
+        $node = $builder->getRootNode();
         $node
             ->addDefaultsIfNotSet()
             ->children()
@@ -63,9 +63,8 @@ class Configuration implements ConfigurationInterface
 
     public function addAlterIncrementNode()
     {
-        $builder = new TreeBuilder();
-        $node = $builder->root('alter_increment_map');
-
+        $builder = new TreeBuilder('alter_increment_map');
+        $node = $builder->getRootNode();
         $node
             ->performNoDeepMerging()
             ->useAttributeAsKey('name')
